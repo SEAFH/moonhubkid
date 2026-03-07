@@ -19,15 +19,14 @@ justify-content:center;
 overflow:hidden;
 }
 
-/* background particles */
+/* particles */
 
 body::before{
 content:"";
 position:absolute;
 width:200%;
 height:200%;
-background-image:
-radial-gradient(#a855f7 1px, transparent 1px);
+background-image: radial-gradient(#a855f7 1px, transparent 1px);
 background-size:40px 40px;
 opacity:0.2;
 animation:move 20s linear infinite;
@@ -38,14 +37,46 @@ animation:move 20s linear infinite;
 100%{transform:translate(-200px,-200px)}
 }
 
+/* INTRO */
+
+#intro{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#0b001a;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+flex-direction:column;
+}
+
+#intro h1{
+font-size:50px;
+color:#c084ff;
+text-shadow:0 0 30px #a855f7;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:0.5}
+50%{opacity:1}
+100%{opacity:0.5}
+}
+
+/* MAIN */
+
 .container{
 position:relative;
 background:rgba(20,0,40,0.9);
 padding:40px;
 border-radius:20px;
 box-shadow:0 0 40px #7b2fff;
-width:380px;
+width:420px;
 z-index:2;
+display:none;
 }
 
 .title{
@@ -57,13 +88,44 @@ text-shadow:0 0 25px #a855f7;
 
 .desc{
 opacity:0.8;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
-button{
+/* script box */
+
+.codebox{
+background:#0d1117;
+border-radius:10px;
+padding:15px;
+font-family:monospace;
+text-align:left;
+font-size:14px;
+position:relative;
+box-shadow:0 0 10px #000 inset;
+}
+
+.copy{
+position:absolute;
+right:10px;
+top:10px;
+background:#21262d;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.copy:hover{
+background:#30363d;
+}
+
+/* buttons */
+
+button.mainbtn{
 width:100%;
 padding:12px;
-margin-top:10px;
+margin-top:15px;
 border:none;
 border-radius:8px;
 font-size:16px;
@@ -73,7 +135,7 @@ color:white;
 transition:0.25s;
 }
 
-button:hover{
+button.mainbtn:hover{
 background:#9b59ff;
 box-shadow:0 0 20px #a855f7;
 transform:scale(1.03);
@@ -90,7 +152,16 @@ opacity:0.6;
 
 <body>
 
-<div class="container">
+<!-- INTRO -->
+
+<div id="intro">
+<h1>🌙 Moon Hub</h1>
+<p>Loading...</p>
+</div>
+
+<!-- MAIN -->
+
+<div class="container" id="main">
 
 <div class="title">🌙 Moon Hub</div>
 
@@ -98,9 +169,18 @@ opacity:0.6;
 Best Roblox Script Hub
 </div>
 
-<button onclick="copyScript()">Copy Script</button>
+<div class="codebox">
+<button class="copy" onclick="copyScript()">Copy</button>
 
-<button onclick="discord()">Join Discord</button>
+loader.lua
+
+<br><br>
+
+loadstring(game:HttpGet('https://raw.moonhub.xyz/loader.lua'))()
+
+</div>
+
+<button class="mainbtn" onclick="discord()">Join Discord</button>
 
 <div class="footer">
 Moon Hub © 2026
@@ -110,15 +190,18 @@ Moon Hub © 2026
 
 <script>
 
+setTimeout(function(){
+document.getElementById("intro").style.display="none"
+document.getElementById("main").style.display="block"
+},2000)
+
 function copyScript(){
 
 const text = "loadstring(game:HttpGet('https://raw.moonhub.xyz/loader.lua'))()"
 
-navigator.clipboard.writeText(text).then(function(){
+navigator.clipboard.writeText(text)
+
 alert("Script Copied!")
-}).catch(function(){
-prompt("Copy script:", text)
-})
 
 }
 
@@ -130,4 +213,3 @@ window.open("https://discord.gg/moonhub")
 
 </body>
 </html>
-```
