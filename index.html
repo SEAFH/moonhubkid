@@ -19,7 +19,7 @@ justify-content:center;
 overflow:hidden;
 }
 
-/* particles */
+/* background particles */
 
 body::before{
 content:"";
@@ -37,46 +37,14 @@ animation:move 20s linear infinite;
 100%{transform:translate(-200px,-200px)}
 }
 
-/* INTRO */
-
-#intro{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#0b001a;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:999;
-flex-direction:column;
-}
-
-#intro h1{
-font-size:50px;
-color:#c084ff;
-text-shadow:0 0 30px #a855f7;
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{opacity:0.5}
-50%{opacity:1}
-100%{opacity:0.5}
-}
-
-/* MAIN */
-
 .container{
 position:relative;
 background:rgba(20,0,40,0.9);
 padding:40px;
 border-radius:20px;
 box-shadow:0 0 40px #7b2fff;
-width:420px;
+width:440px;
 z-index:2;
-display:none;
 }
 
 .title{
@@ -96,47 +64,75 @@ margin-bottom:20px;
 .codebox{
 background:#0d1117;
 border-radius:10px;
-padding:15px;
+padding:35px 15px 15px 15px;
 font-family:monospace;
+font-size:12px;
 text-align:left;
-font-size:14px;
 position:relative;
+
+white-space:nowrap;
+overflow-x:auto;
+overflow-y:hidden;
+
 box-shadow:0 0 10px #000 inset;
+margin-bottom:20px;
 }
 
-.copy{
+/* loader.lua text */
+
+.filename{
+color:#a855f7;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+/* copy button */
+
+.copybtn{
 position:absolute;
 right:10px;
-top:10px;
+top:8px;
 background:#21262d;
 border:none;
 color:white;
-padding:6px 10px;
+padding:5px 10px;
 border-radius:6px;
 cursor:pointer;
+font-size:12px;
+width:auto;
 }
 
-.copy:hover{
+.copybtn:hover{
 background:#30363d;
+}
+
+/* scrollbar */
+
+.codebox::-webkit-scrollbar{
+height:6px;
+}
+
+.codebox::-webkit-scrollbar-thumb{
+background:#7a2fff;
+border-radius:10px;
 }
 
 /* buttons */
 
-button.mainbtn{
+button{
 width:100%;
 padding:12px;
-margin-top:15px;
+margin-top:10px;
 border:none;
 border-radius:8px;
 font-size:16px;
 cursor:pointer;
-background:#7a2fff;
+background:linear-gradient(90deg,#7a2fff,#9b59ff);
 color:white;
 transition:0.25s;
 }
 
-button.mainbtn:hover{
-background:#9b59ff;
+button:hover{
 box-shadow:0 0 20px #a855f7;
 transform:scale(1.03);
 }
@@ -152,16 +148,7 @@ opacity:0.6;
 
 <body>
 
-<!-- INTRO -->
-
-<div id="intro">
-<h1>🌙 Moon Hub</h1>
-<p>Loading...</p>
-</div>
-
-<!-- MAIN -->
-
-<div class="container" id="main">
+<div class="container">
 
 <div class="title">🌙 Moon Hub</div>
 
@@ -170,17 +157,16 @@ Best Roblox Script Hub
 </div>
 
 <div class="codebox">
-<button class="copy" onclick="copyScript()">Copy</button>
 
-loader.lua
+<button class="copybtn" onclick="copyScript()">Copy</button>
 
-<br><br>
+<div class="filename">loader.lua</div>
 
-loadstring(game:HttpGet('https://raw.moonhub.xyz/loader.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/SEAFH/Dev-Moon-Hub/main/main.lua'))()
 
 </div>
 
-<button class="mainbtn" onclick="discord()">Join Discord</button>
+<button onclick="discord()">Join Discord</button>
 
 <div class="footer">
 Moon Hub © 2026
@@ -190,18 +176,15 @@ Moon Hub © 2026
 
 <script>
 
-setTimeout(function(){
-document.getElementById("intro").style.display="none"
-document.getElementById("main").style.display="block"
-},2000)
-
 function copyScript(){
 
-const text = "loadstring(game:HttpGet('https://raw.moonhub.xyz/loader.lua'))()"
+const text = "loadstring(game:HttpGet('https://raw.githubusercontent.com/SEAFH/Dev-Moon-Hub/main/main.lua'))()"
 
-navigator.clipboard.writeText(text)
-
+navigator.clipboard.writeText(text).then(function(){
 alert("Script Copied!")
+}).catch(function(){
+prompt("Copy script:", text)
+})
 
 }
 
