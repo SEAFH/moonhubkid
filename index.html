@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,156 +8,127 @@
 <style>
 
 body{
-background: radial-gradient(circle at top,#0b0015,#020006);
-color:white;
+margin:0;
 font-family:Arial;
+background: radial-gradient(circle at top,#2a0055,#0b001a);
+color:white;
 text-align:center;
-padding-top:80px;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
 }
 
-/* title */
+/* background particles */
+
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background-image:
+radial-gradient(#a855f7 1px, transparent 1px);
+background-size:40px 40px;
+opacity:0.2;
+animation:move 20s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translate(0,0)}
+100%{transform:translate(-200px,-200px)}
+}
+
+.container{
+position:relative;
+background:rgba(20,0,40,0.9);
+padding:40px;
+border-radius:20px;
+box-shadow:0 0 40px #7b2fff;
+width:380px;
+z-index:2;
+}
 
 .title{
-font-size:80px;
-font-weight:bold;
-color:#a855f7;
-text-shadow:0 0 30px #9333ea;
+font-size:42px;
+color:#c084ff;
+margin-bottom:10px;
+text-shadow:0 0 25px #a855f7;
 }
 
-.subtitle{
-color:#bbb;
+.desc{
+opacity:0.8;
+margin-bottom:25px;
+}
+
+button{
+width:100%;
+padding:12px;
 margin-top:10px;
-font-size:22px;
-}
-
-.subtitle span{
-color:#c084fc;
-}
-
-/* script box */
-
-.script-box{
-margin:40px auto;
-background:#111;
-border-radius:12px;
-padding:18px;
-width:520px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-border:1px solid #9333ea;
-box-shadow:0 0 15px #9333ea55;
-font-family:Consolas;
-}
-
-.script{
-color:#7dd3fc;
-font-size:15px;
-}
-
-.copy{
-cursor:pointer;
-font-size:20px;
-color:#aaa;
-}
-
-/* buttons */
-
-.btn{
-padding:15px 30px;
-border-radius:10px;
 border:none;
-margin:10px;
+border-radius:8px;
 font-size:16px;
 cursor:pointer;
-}
-
-.primary{
-background:#9333ea;
+background:#7a2fff;
 color:white;
+transition:0.25s;
 }
 
-.secondary{
-background:transparent;
-border:1px solid #9333ea;
-color:#c084fc;
+button:hover{
+background:#9b59ff;
+box-shadow:0 0 20px #a855f7;
+transform:scale(1.03);
 }
 
-/* discord card */
-
-.card{
-margin:60px auto;
-width:420px;
-background:#0b0b18;
-border-radius:14px;
-padding:30px;
-border:1px solid #9333ea;
-box-shadow:0 0 20px #9333ea55;
-}
-
-.join{
+.footer{
 margin-top:20px;
-background:#5865F2;
-padding:12px;
-border-radius:8px;
+font-size:12px;
+opacity:0.6;
 }
 
 </style>
 </head>
 
-
 <body>
 
-<div class="title">moon</div>
+<div class="container">
 
-<div class="subtitle">
-the only <span>Moon Hub</span> script you'll need
+<div class="title">🌙 Moon Hub</div>
+
+<div class="desc">
+Best Roblox Script Hub
 </div>
 
+<button onclick="copyScript()">Copy Script</button>
 
-<div class="script-box">
+<button onclick="discord()">Join Discord</button>
 
-<div class="script" id="script">
-loadstring(game:HttpGet("https://moonhub-seven.vercel.app/loader.lua"))()
-</div>
-
-<div class="copy" onclick="copyScript()">📋</div>
-
-</div>
-
-
-<button class="btn primary">get key</button>
-<button class="btn secondary">request script</button>
-
-<p style="color:#a855f7">keyless every weekend!</p>
-
-
-<div class="card">
-
-<h3>Moon Hub Community</h3>
-
-<p>Join our Discord for updates</p>
-
-<div class="join">
-Join Server
+<div class="footer">
+Moon Hub © 2026
 </div>
 
 </div>
-
 
 <script>
 
 function copyScript(){
 
-let text=document.getElementById("script").innerText;
+const text = "loadstring(game:HttpGet('https://raw.moonhub.xyz/loader.lua'))()"
 
-navigator.clipboard.writeText(text);
+navigator.clipboard.writeText(text).then(function(){
+alert("Script Copied!")
+}).catch(function(){
+prompt("Copy script:", text)
+})
 
-alert("Copied!");
+}
 
+function discord(){
+window.open("https://discord.gg/moonhub")
 }
 
 </script>
 
 </body>
 </html>
+```
