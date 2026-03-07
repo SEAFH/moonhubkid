@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Moon Hub</title>
@@ -7,71 +7,98 @@
 <style>
 
 body{
-background:#050510;
+background: radial-gradient(circle at top,#0b0015,#020006);
 color:white;
-font-family:Consolas, monospace;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-margin:0;
-}
-
-/* main box */
-
-.container{
+font-family:Arial;
 text-align:center;
-background:#0b0b18;
-padding:40px;
-border-radius:15px;
-box-shadow:0 0 40px purple;
-width:520px;
+padding-top:80px;
 }
 
 /* title */
 
 .title{
-font-size:40px;
-color:#c084ff;
-text-shadow:0 0 20px #9333ea;
-margin-bottom:10px;
+font-size:80px;
+font-weight:bold;
+color:#a855f7;
+text-shadow:0 0 30px #9333ea;
 }
 
-.desc{
-color:#aaa;
-margin-bottom:30px;
+.subtitle{
+color:#bbb;
+margin-top:10px;
+font-size:22px;
+}
+
+.subtitle span{
+color:#c084fc;
 }
 
 /* script box */
 
 .script-box{
-background:#030712;
-padding:20px;
-border-radius:10px;
+margin:40px auto;
+background:#111;
+border-radius:12px;
+padding:18px;
+width:520px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 border:1px solid #9333ea;
-color:#60a5fa;
-box-shadow:0 0 20px #9333ea;
-font-size:14px;
-overflow:auto;
+box-shadow:0 0 15px #9333ea55;
+font-family:Consolas;
 }
 
-/* copy button */
+.script{
+color:#7dd3fc;
+font-size:15px;
+}
 
-button{
-margin-top:20px;
-padding:12px 25px;
-border:none;
-border-radius:8px;
-background:linear-gradient(45deg,#9333ea,#c084fc);
-color:white;
-font-weight:bold;
+.copy{
 cursor:pointer;
-transition:0.3s;
+font-size:20px;
+color:#aaa;
 }
 
-button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px #9333ea;
+/* buttons */
+
+.btn{
+padding:15px 30px;
+border-radius:10px;
+border:none;
+margin:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+.primary{
+background:#9333ea;
+color:white;
+}
+
+.secondary{
+background:transparent;
+border:1px solid #9333ea;
+color:#c084fc;
+}
+
+/* discord card */
+
+.card{
+margin:60px auto;
+width:420px;
+background:#0b0b18;
+border-radius:14px;
+padding:30px;
+border:1px solid #9333ea;
+box-shadow:0 0 20px #9333ea55;
+}
+
+.join{
+margin-top:20px;
+background:#5865F2;
+padding:12px;
+border-radius:8px;
 }
 
 </style>
@@ -80,16 +107,39 @@ box-shadow:0 0 20px #9333ea;
 
 <body>
 
-<div class="container">
+<div class="title">moon</div>
 
-<div class="title">MOON HUB</div>
-<div class="desc">Best Roblox Script Hub</div>
-
-<div class="script-box" id="script">
-loadstring(game:HttpGet("https://moon-hub-eight.vercel.app/loader.lua"))()
+<div class="subtitle">
+the only <span>Moon Hub</span> script you'll need
 </div>
 
-<button onclick="copyScript()">Copy Script</button>
+
+<div class="script-box">
+
+<div class="script" id="script">
+loadstring(game:HttpGet("https://moonhub-seven.vercel.app/loader.lua"))()
+</div>
+
+<div class="copy" onclick="copyScript()">📋</div>
+
+</div>
+
+
+<button class="btn primary">get key</button>
+<button class="btn secondary">request script</button>
+
+<p style="color:#a855f7">keyless every weekend!</p>
+
+
+<div class="card">
+
+<h3>Moon Hub Community</h3>
+
+<p>Join our Discord for updates</p>
+
+<div class="join">
+Join Server
+</div>
 
 </div>
 
@@ -98,16 +148,15 @@ loadstring(game:HttpGet("https://moon-hub-eight.vercel.app/loader.lua"))()
 
 function copyScript(){
 
-let text = document.getElementById("script").innerText;
+let text=document.getElementById("script").innerText;
 
 navigator.clipboard.writeText(text);
 
-alert("Script Copied!");
+alert("Copied!");
 
 }
 
 </script>
-
 
 </body>
 </html>
