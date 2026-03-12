@@ -15,10 +15,10 @@ if (strpos($ua, 'Roblox') !== false) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0""")/>>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>moon™</title>
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet""")/>>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@800;900&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -37,7 +37,7 @@ if (strpos($ua, 'Roblox') !== false) {
     .nav-logo { display: flex; align-items: center; gap: 10px; font-family: 'Urbanist', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--text); text-decoration: none; }
     .moon-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--purple), var(--purple-dim)); border-radius: 50%; box-shadow: 0 0 14px var(--purple-glow); position: relative; }
     .moon-icon::after { content: ''; position: absolute; top: 3px; right: 3px; width: 18px; height: 18px; background: var(--bg); border-radius: 50%; }
-    
+
     main { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; padding: 90px 20px 60px; text-align: center; }
     .wordmark {
       font-family: 'Urbanist', sans-serif; font-size: clamp(4.5rem, 11vw, 8rem); font-weight: 900; line-height: 0.95;
@@ -52,7 +52,7 @@ if (strpos($ua, 'Roblox') !== false) {
       max-width: 560px; width: 100%;
     }
     .code-text { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: #c4b5fd; flex: 1; text-align: left; word-break: break-all; }
-    
+
     .btn-primary {
       margin-top: 28px; display: inline-block; text-decoration: none;
       background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dim) 100%);
